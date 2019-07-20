@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1>Testing</h1>
     <sidemenu></sidemenu>
   </div>
 </template>
@@ -18,4 +17,6 @@ export default {
 </script>
 
 <style>
+ * { margin: 0 !important; }
+
 </style>
