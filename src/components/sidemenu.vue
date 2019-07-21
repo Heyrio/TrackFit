@@ -1,13 +1,11 @@
 <template>
     <div class="side-menu">
-      <div class="columns">
-        <div class="column">
-          <div class="name">
-            <div class="photo">
-              <h1>Hamzah Amer</h1>
-                <img class="responsive " src="@/assets/images/me.jpg">
+      <div class="columns is-multiline is-mobile">
+        <div class="column photo">
+          <h1>Hamzah Amer</h1>
+          <div class="pic-box">
+            <img class="" src="@/assets/images/me.jpg">
             </div>
-          </div>
         </div>
       </div>
      <div class="columns">
@@ -41,6 +39,10 @@ export default {
 </script>
 
 <style>
+.pic-box{
+  display: flex;
+  justify-content: center;
+}
  a{
   color: #fff !important;
   font-weight: 600;
@@ -49,22 +51,17 @@ a:hover{
   color: #43B984 !important;
 }
 .photo h1{
+  color: white;
+  font-size: 2em;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 25px !important;
 }
 .photo img {
-  border-radius: 200px;
-  height: 200px;
-}
-.photo{
-  float: right;
-  width: 200px;
-  height: 200px;
-}
-.name{
-  color: white;
   display: flex;
   justify-content: center;
+  border-radius: 200px;
+  height: 200px;
 }
 .side-menu{
   padding: 50px;
