@@ -4,7 +4,7 @@
         <div class="column photo">
           <h1>Hamzah Amer</h1>
           <div class="pic-box">
-            <img class="" src="@/assets/images/me.jpg">
+            <img class="is-fluid" src="@/assets/images/me.jpg">
             </div>
         </div>
       </div>
@@ -15,12 +15,12 @@
         <ul class="menu-list">
           <li>
             <ul>
-              <a>Stats</a>
-              <a>Graph</a>
-              <a>Lorem, iporibus harum.</a>
-              <a>Invitati;dslfkmasmdfons</a>
-              <a>CloudsfsdfSettings</a>
-              <a>Autdsfasdtion</a>
+              <a @click="menuSelect(1)" :class="{ selected: item1 }">My Dashboard</a>
+              <a @click="menuSelect(2)" :class="{ selected: item2 }">Fitness Stats</a>
+              <a @click="menuSelect(3)" :class="{ selected: item3 }">Open Voting</a>
+              <a @click="menuSelect(4)" :class="{ selected: item4 }">Compare Contributions</a>
+              <a @click="menuSelect(5)" :class="{ selected: item5 }">Gym Routine</a>
+              <a @click="menuSelect(6)" :class="{ selected: item6 }">Logout</a>
             </ul>
           </li>
         </ul>
@@ -35,10 +35,77 @@
 <script>
 export default {
   name: 'sidemenu',
+  data(){
+  return{
+      item1: true,
+      item2: false,
+      item3: false,
+      item4: false,
+      item5: false,
+      item6: false,
+
+    }
+  },
+  methods:{
+    menuSelect(item){
+      if(item === 1){
+      this.item1 = true;
+      this.item2 = false;
+      this.item3 = false;
+      this.item4 = false;
+      this.item5 = false;
+      this.item6 = false;
+      }else if(item === 2){
+      this.item1 = false;
+      this.item2 = true;
+      this.item3 = false;
+      this.item4 = false;
+      this.item5 = false;
+      this.item6 = false;
+      }else if(item === 3){
+      this.item1 = false;
+      this.item2 = false;
+      this.item3 = true;
+      this.item4 = false;
+      this.item5 = false;
+      this.item6 = false;
+      }else if(item === 4){
+      this.item1 = false;
+      this.item2 = false;
+      this.item3 = false;
+      this.item4 = true;
+      this.item5 = false;
+      this.item6 = false;
+      }else if(item === 5){
+      this.item1 = false;
+      this.item2 = false;
+      this.item3 = false;
+      this.item4 = false;
+      this.item5 = true;
+      this.item6 = false;
+      }else if(item === 6){
+      this.item1 = false;
+      this.item2 = false;
+      this.item3 = false;
+      this.item4 = false;
+      this.item5 = false;
+      this.item6 = true;
+      }
+     
+    }
+  },
 }
+
 </script>
 
 <style>
+*{
+  font-size: 1.03em;
+}
+.selected{
+  background-color: #f5F5F5 !important;
+  color: #43B984 !important;
+}
 .pic-box{
   display: flex;
   justify-content: center;
@@ -60,8 +127,8 @@ a:hover{
 .photo img {
   display: flex;
   justify-content: center;
-  border-radius: 200px;
-  height: 200px;
+  border-radius: 100%;
+  width: 65%;
 }
 .side-menu{
   padding: 50px;
