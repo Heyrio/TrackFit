@@ -1,6 +1,6 @@
 <template>
     <div class="side-menu">
-      <div class="columns is-multiline is-mobile">
+      <div class="columns">
         <div class="column photo">
           <h1>Hamzah Amer</h1>
           <div class="pic-box">
@@ -16,7 +16,7 @@
           <li>
             <ul>
               <router-link to="/dashboard" @click.native="menuSelect(1)" :class="{ selected: item1 }">My Dashboard</router-link>
-              <router-link to="/voting" @click.native="menuSelect(2)" :class="{ selected: item2 }">Open Voting</router-link>
+              <router-link to="/meals" @click.native="menuSelect(2)" :class="{ selected: item2 }">My Meals</router-link>
               <router-link to="/compare" @click.native="menuSelect(3)" :class="{ selected: item3 }">Compare Contributions</router-link>
               <router-link to="/stats" @click.native="menuSelect(4)" :class="{ selected: item4 }">Fitness Stats</router-link>
               <router-link to="/routine" @click.native="menuSelect(5)" :class="{ selected: item5 }">Gym Routine</router-link>
@@ -135,7 +135,7 @@ a:hover{
   background-color: #43B984;
   box-shadow: 4px 2px 5px -2px rgba(0,0,0,0.75);
   border-right: 1px solid rgb(156, 153, 153);
-  width: 33%;
+  width: 100%;
   height: 100vh;
 }
 </style>

@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <sidemenu></sidemenu>
-    <router-view/>
+    <div class="columns">
+      <div class="colum">
+        <sidemenu></sidemenu>
+      </div>
+      <div class="column is-full">
+        <router-view/>
+      </div>
+    </div>
+    
+    
   </div>
 </template>
 
