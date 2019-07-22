@@ -15,12 +15,13 @@
         <ul class="menu-list">
           <li>
             <ul>
-              <a @click="menuSelect(1)" :class="{ selected: item1 }">My Dashboard</a>
-              <a @click="menuSelect(2)" :class="{ selected: item2 }">Fitness Stats</a>
-              <a @click="menuSelect(3)" :class="{ selected: item3 }">Open Voting</a>
-              <a @click="menuSelect(4)" :class="{ selected: item4 }">Compare Contributions</a>
-              <a @click="menuSelect(5)" :class="{ selected: item5 }">Gym Routine</a>
-              <a @click="menuSelect(6)" :class="{ selected: item6 }">Logout</a>
+              <router-link to="/dashboard" @click="menuSelect(1)" :class="{ selected: item1 }">My Dashboard</router-link>
+              <router-link to="/voting" @click="menuSelect(2)" :class="{ selected: item2 }">Open Voting</router-link>
+              <router-link to="/dashboard" @click="menuSelect(3)" :class="{ selected: item3 }">Compare Contributions</router-link>
+              <router-link to="/compare" @click="menuSelect(4)" :class="{ selected: item4 }">Fitness Stats</router-link>
+              <router-link to="/stats" @click="menuSelect(5)" :class="{ selected: item5 }">Gym Routine</router-link>
+              <router-link to="/" @click="menuSelect(6)" :class="{ selected: item6 }">Logout</router-link>
+    
             </ul>
           </li>
         </ul>
