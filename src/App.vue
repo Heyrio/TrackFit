@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="columns">
-      <div class="colum">
+      <div class="colum is-one-third">
         <sidemenu></sidemenu>
       </div>
-      <div class="column is-full">
+      <div class="column is-two-thirds">
         <router-view/>
       </div>
     </div>
