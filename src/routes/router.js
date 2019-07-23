@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import dash from '@/views/dash'
 import stats from '@/views/stats'
+import home from '@/views/home'
 Vue.use(Router)
 
 export default new Router({
@@ -14,5 +15,9 @@ export default new Router({
         path: '/stats',
         name: 'Stats',
         component: stats,
+    }, {
+        path: '/',
+        name: 'Home',
+        component: home,
     }]
 })
