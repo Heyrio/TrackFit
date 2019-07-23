@@ -1,6 +1,15 @@
 <template>
   <div id="app">
-    <sidemenu></sidemenu>
+    <div class="columns">
+      <div class="colum is-one-third">
+        <sidemenu></sidemenu>
+      </div>
+      <div class="column is-two-thirds">
+        <router-view/>
+      </div>
+    </div>
+    
+    
   </div>
 </template>
 
