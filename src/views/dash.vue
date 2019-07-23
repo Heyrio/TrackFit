@@ -2,24 +2,7 @@
     <div class="dash">
       <div class="columns is-mobile">
           <div class="column is-one-third">
-           <img class="man" src="http://pluspng.com/img-png/png-human-body-outline-body-outline-cliparts-2473421-210.png" alt="PNG Human Body Outline">
-          </div>
-          <div class="is-full">
-            <apexchart width="500" type="line" :options="chartOptions" :series="series"></apexchart>
-          </div>
-      </div>
-       <div>
-   </div>
-     <div class="container is-fluid">
-        <div class="columns is-full is-mobile">
-          <div class="column is-half">
-              <strong>Daily Calories Left: {{calories}} KCal</strong>
-            <progress class="progress is-success" :value="calories" max="2100"></progress>
-          </div>
-        <div class="column is-half">
-          <strong>Daily Water Intake Left: {{water}} Liters</strong>
-        <progress class="progress is-link" :value="calories" max="2100"></progress>
-        </div>
+            <apexchart class="is-full" width="900" type="heatmap" :options="chartOptions" :series="series"></apexchart>
         </div>
       </div>
       </div>
@@ -34,6 +17,7 @@ export default {
   },
  data(){
    return {
+     weight: 194,
      water: 2,
      calories: 1900,
      chartOptions: {
@@ -41,19 +25,60 @@ export default {
             id: 'vuechart-example'
           },
           xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            categories: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6','Day 7'],
+            
           }
         },
         series: [{
-          name: 'series-1',
-          data: [30, 40, 35, 50, 49, 60, 70, 91]
-        }]
+            name: 'Week1',
+            data: this.generateData(18, {
+              min: 0,
+              max: 90
+            })
+          },{
+            name: 'Week2',
+            data: this.generateData(18, {
+              min: 0,
+              max: 90
+            })
+          },
+          {
+            name: 'Week3',
+            data: this.generateData(18, {
+              min: 0,
+              max: 90
+            })
+          },
+          {
+            name: 'Week4',
+            data: this.generateData(18, {
+              min: 0,
+              max: 90
+            })
+          }]
+   }
+ },
+ methods:{
+   generateData(count, yrange){
+      var i = 0;
+      var series = [];
+      while (i < count) {
+        var x = 'w' + (i + 1).toString();
+        var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+        series.push({
+          x: x,
+          y: y
+        });
+        i++;
+      }
+      return series;
    }
  }
 }
 </script>
 
-<style>
+<style scoped>
 *{
   font-size: 1.03em;
 }
@@ -62,7 +87,7 @@ export default {
   padding-right: 2%;
 }
 .man{
-  height: 78vh;
+  height: 75vh;
   color: #232323 !important;
 }
 .weight h1{
