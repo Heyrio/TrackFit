@@ -1,15 +1,13 @@
 <template>
   <div id="app">
     <div class="columns">
-      <div class="colum is-one-third">
-        <sidemenu></sidemenu>
+      <div>
+        <sidemenu v-if="homePage()"></sidemenu>
       </div>
       <div class="column is-two-thirds">
         <router-view/>
       </div>
     </div>
-    
-    
   </div>
 </template>
 
@@ -21,6 +19,19 @@ export default {
   name: 'app',
   components:{
     sidemenu
+  },
+  data(){
+    return{
+    }
+  },
+  methods:{
+     homePage() {
+      if(this.$route.path == "/") {
+        return false
+      } else {
+        return true
+      }
+    }
   }
 }
 </script>

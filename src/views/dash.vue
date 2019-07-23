@@ -55,43 +55,7 @@ export default {
               min: 0,
               max: 90
             })
-          },
-          // {
-          //   name: 'Metric5',
-          //   data: this.generateData(18, {
-          //     min: 0,
-          //     max: 90
-          //   })
-          // },
-          // {
-          //   name: 'Metric6',
-          //   data: this.sgenerateData(18, {
-          //     min: 0,
-          //     max: 90
-          //   })
-          // },
-          // {
-          //   name: 'Metric7',
-          //   data: this.generateData(18, {
-          //     min: 0,
-          //     max: 90
-          //   })
-          // },
-          // {
-          //   name: 'Metric8',
-          //   data: this.generateData(18, {
-          //     min: 0,
-          //     max: 90
-          //   })
-          // },
-          // {
-          //   name: 'Metric9',
-          //   data: this.generateData(18, {
-          //     min: 0,
-          //     max: 90
-          //   })
-          // }]
-        ]
+          }]
    }
  },
  methods:{
