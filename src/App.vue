@@ -25,6 +25,7 @@ export default {
     }
   },
   methods:{
+    
      homePage() {
       if(this.$route.path == "/") {
         return false
@@ -37,6 +38,7 @@ export default {
 </script>
 
 <style>
- * { margin: 0 !important; }
+ * { margin: 0 !important; 
+ }
 
 </style>

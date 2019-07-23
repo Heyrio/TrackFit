@@ -5,8 +5,9 @@ import stats from '@/views/stats'
 import home from '@/views/home'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'history',
+
     routes: [{
         path: '/dashboard',
         name: 'Dashboard',
@@ -20,4 +21,12 @@ export default new Router({
         name: 'Home',
         component: home,
     }]
+
 })
+export default router;
+router.afterEach((to) => {
+    if (to.name === "Home") {
+        document.querySelector("html").classList.add("bg");
+        console.log('home');
+    }
+});

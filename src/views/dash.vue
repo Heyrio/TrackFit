@@ -82,6 +82,7 @@ export default {
 *{
   font-size: 1.03em;
 }
+
 .dash{
   padding-left: 2%;
   padding-right: 2%;
@@ -94,3 +95,4 @@ export default {
   text-align: center;
 }
 </style>
+
