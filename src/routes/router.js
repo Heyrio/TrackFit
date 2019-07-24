@@ -27,5 +27,7 @@ export default router;
 router.afterEach((to) => {
     if (to.name === "Home") {
         document.querySelector("html").classList.add("bg");
+    } else {
+        document.querySelector("html").classList.remove("bg");
     }
 });
