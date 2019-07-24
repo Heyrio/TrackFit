@@ -1,4 +1,4 @@
-# couplefit
+# TrackFit
 
 ## Project setup
 ```
