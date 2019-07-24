@@ -4,6 +4,7 @@
         <div class="columns is-centered">
           <div class="column is-full">
             <h1>TrackFit</h1>
+            <p>( A place to log your fitness activities )</p>
           </div>
         </div>
         <div class="columns is-centered">
@@ -13,7 +14,7 @@
                 <div class="field">
                   <div class="column is-half">
                     <div>
-                      <label>Username: <input type="text" placeholder=""></label>
+                      <label>Email: <input type="email" placeholder=""></label>
                     </div>
                   </div>
                   <div class="column is-half">
@@ -23,7 +24,8 @@
                   </div>
                   <div class="columns is-pulled-right">
                 <div class="column is-full ">
-                  <button class="button is-primary">Login</button>
+                  <button class="button is-primary">Register</button>
+                  <button class="button is-success">Login</button>
                 </div>
                </div>
                 </div>
@@ -56,7 +58,11 @@ export default {
   html{
     background-color: blue;
   }
-
+  .column>p{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+  }
   .column >h1{
     display: flex;
     justify-content: center;
