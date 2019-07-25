@@ -3,11 +3,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Post = require('./Post');
 const app = express();
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //Connecting to MongoDB 
-const URI = 'mongodb+srv://hamer1563:pass@cluster0-8nnoe.mongodb.net/test?retryWrites=true'
+const URI = 'mongodb+srv://admin:passabc@cluster0-zfho8.mongodb.net/test?retryWrites=true&w=majority'
 mongoose.connect(URI, { useNewUrlParser: true }).then(() => {
     /*eslint-disable*/
     console.log('Database connected...')
@@ -15,7 +17,11 @@ mongoose.connect(URI, { useNewUrlParser: true }).then(() => {
     console.log(err);
 })
 
-app.use(morgan('tiny'));
+Post.find({}, (err, posts) => {
+        console.log(posts)
+    }),
+
+    app.use(morgan('tiny'));
 app.use(cors());
 app.use(bodyParser.json());
 
