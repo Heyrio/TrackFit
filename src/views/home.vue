@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="columns is-centered">
-          <div class="column is-half">
+          <div class="column is-one-third">
             <div class="box">
               <div class="columns is-centered">
                 <div class="field">
@@ -25,7 +25,7 @@
                   <div class="columns is-pulled-right">
                 <div class="column is-full ">
                   <button class="button is-primary">Register</button>
-                  <button class="button is-success">Login</button>
+                  <button @click="$router.push('Dashboard')" class="button is-success">Login</button>
                 </div>
                </div>
                 </div>
@@ -49,6 +49,7 @@ export default {
  },
  methods:{
 
+
  }
 }
 </script>
@@ -70,5 +71,8 @@ export default {
     font-size: 5em;
     color: #fff;
     text-shadow: 2px 2px #232323;
+  }
+  .button{
+    margin-right: 2px !important;
   }
 </style>
