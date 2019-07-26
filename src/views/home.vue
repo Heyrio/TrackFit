@@ -37,7 +37,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'home',
   components:{
@@ -45,12 +45,24 @@ export default {
   },
  data(){
    return {
+    data: null,
    }
  },
+  mounted(){
+    this.dataCall();
+  },
  methods:{
-
-
- }
+   dataCall(){
+     let uri = 'http://localhost:4000/';
+      axios
+            .get(uri)
+            .then((response) => {
+              this.data = response.data;
+              /*eslint-disable*/
+              console.log(this.data);
+          });
+        },
+   }
 }
 </script>
 
