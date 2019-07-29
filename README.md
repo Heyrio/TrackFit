@@ -1,5 +1,5 @@
 # TrackFit
-
+This is a Fitness tracking application that logs workouts and eating habits.
 ## Project setup
 ```
 npm install
