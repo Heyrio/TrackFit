@@ -25,7 +25,6 @@ app.get('/all', (req, res) => {
     res.send(data);
 });
 
-
 // All data call
 UserInfo.find({}, (err, info) => {
     data = info;

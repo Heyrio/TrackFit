@@ -133,11 +133,10 @@ export default {
      user.lastName = this.$refs.last.value;
      user.email = this.$refs.email.value;
      user.password = this.$refs.pass.value;
-     user.age = this.$refs.age.selected;
+     user.age = this.$refs.age.value;
      user.height = this.$refs.height.selected;
      user.weight = this.$refs.weight.value;
      /*eslint-disable*/
-      console.log(user);
        axios
             .post(this.uri, user)
             .then((response) => {
