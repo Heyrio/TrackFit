@@ -25,7 +25,7 @@
                   <div class="columns is-pulled-right">
                 <div class="column is-full ">
                   <button @click="registerPage()" class="button is-info">Register</button>
-                  <button @click="$router.push('Dashboard')" class="button is-success">Login</button>
+                  <button @click="$router.push('Dashboard'), dataCall();" class="button is-success">Login</button>
                 </div>
                </div>
                </form>
@@ -124,7 +124,7 @@ export default {
    }
  },
   mounted(){
-    this.dataCall();
+  
   },
  methods:{
    postUser(){
@@ -158,7 +158,7 @@ export default {
    },
    dataCall(){
       axios
-            .get(this.uri)
+            .get(this.uri+ "all")
             .then((response) => {
               this.data = response.data;
               /*eslint-disable*/
