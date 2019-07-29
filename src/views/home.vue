@@ -84,8 +84,7 @@
                     <div>
                       <h1>Height:</h1>
                     <b-select placeholder="Height" icon="account">
-                      <option value="1">Option 1</option>
-                      <option value="2">Option 2</option>
+                      <option v-for="height in heights" :key="height">{{height}}</option>
                    </b-select>
                     </div>
                   </div>
@@ -114,7 +113,9 @@ export default {
   },
  data(){
    return {
-     height: [],
+    heights: ["4'10","4'11","5'0","5'1","5'2","5'3",
+    "5'4","5'5","5'6","5'7","5'8","5'9","5'10","5'11",
+    "6'0","6'1","6'2","6'3","6'4"],
     isRegister: false,
     data: null,
    }
