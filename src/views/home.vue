@@ -36,17 +36,18 @@
           <div v-if="isRegister === true">
             <div class="box">
               <div class="field">
+            <form onsubmit="return false">
                <div class="columns">
                   <div class="column">
                      <div>
                       <h1>First Name:</h1>
-                      <input type="text" placeholder="">
+                      <input type="text" placeholder="" ref="first">
                     </div>
                   </div>
                   <div class="column">
                     <div>
                       <h1>Last Name:</h1>
-                      <input type="text" placeholder="">
+                      <input type="text" placeholder="" ref="last">
                     </div>
                   </div>
                 </div>
@@ -54,13 +55,13 @@
                   <div class="column">
                     <div>
                       <h1>Email:</h1>
-                   <input type="email" placeholder="">
+                   <input type="email" placeholder="" ref="email">
                     </div>
                   </div>
                   <div class="column">
                     <div>
                       <h1>Password:</h1>
-                   <input type="password" placeholder="">
+                   <input type="password" placeholder="" ref="pass">
                     </div>
                   </div>
                 </div>
@@ -68,13 +69,13 @@
                   <div class="column">
                        <div>
                       <h1>Current Weight:</h1>
-                   <input type="text" placeholder="">
+                   <input type="text" placeholder="" ref="weight">
                     </div>
                   </div>
                   <div class="column">
                      <div>
                       <h1>Age:</h1>
-                   <input type="text" placeholder="">
+                    <input type="text" placeholder="" ref="age">
                     </div>
                   </div>
                 </div>
@@ -82,7 +83,7 @@
                   <div class="column">
                     <div>
                       <h1>Height:</h1>
-                    <b-select placeholder="Height" icon="account">
+                    <b-select placeholder="Height" icon="account" ref="height">
                       <option v-for="height in heights" :key="height">{{height}}</option>
                    </b-select>
                     </div>
@@ -91,11 +92,12 @@
                       <div class="columns is-pulled-right">
                 <div class="column is-full ">
                   <button @click="registerPage()" class="button is-info">Return</button>
-                  <button @click="$router.push('Dashboard')" class="button is-success">Create Account</button>
+                  <button @click="postUser()" type="submit" class="button is-success">Create Account</button>
                 </div>
                </div>
                   </div>
                 </div>
+                </form>
               </div>
             </div>
           </div>
@@ -105,6 +107,7 @@
 
 <script>
 import axios from 'axios';
+import User from '@/model/User.js'
 export default {
   name: 'home',
   components:{
@@ -112,6 +115,7 @@ export default {
   },
  data(){
    return {
+    uri: 'http://localhost:4000/',
     heights: ["4'10","4'11","5'0","5'1","5'2","5'3",
     "5'4","5'5","5'6","5'7","5'8","5'9","5'10","5'11",
     "6'0","6'1","6'2","6'3","6'4"],
@@ -123,19 +127,38 @@ export default {
     this.dataCall();
   },
  methods:{
+   postUser(){
+     let user = new User();
+     user.firstName = this.$refs.first.value;
+     user.lastName = this.$refs.last.value;
+     user.email = this.$refs.email.value;
+     user.password = this.$refs.pass.value;
+     user.age = this.$refs.age.selected;
+     user.height = this.$refs.height.selected;
+     user.weight = this.$refs.weight.value;
+     /*eslint-disable*/
+      console.log(user);
+       axios
+            .post(this.uri, user)
+            .then((response) => {
+              this.data = response.data;
+              /*eslint-disable*/
+              console.log(this.data);
+          })
+          .catch((error)=>{
+            console.log(error);
+          });
+   },
    registerPage(){
      if(this.isRegister === false){
        this.isRegister = true;
      }else{
        this.isRegister = false;
      }
-
-     
    },
    dataCall(){
-     let uri = 'http://localhost:4000/';
       axios
-            .get(uri)
+            .get(this.uri)
             .then((response) => {
               this.data = response.data;
               /*eslint-disable*/
