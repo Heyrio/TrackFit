@@ -24,7 +24,7 @@
                   </div>
                   <div class="columns is-pulled-right">
                 <div class="column is-full ">
-                  <button @click="registerPage()" class="button is-primary">Register</button>
+                  <button @click="registerPage()" class="button is-info">Register</button>
                   <button @click="$router.push('Dashboard')" class="button is-success">Login</button>
                 </div>
                </div>
@@ -66,7 +66,6 @@
                 </div>
                   <div class="columns">
                   <div class="column">
-                     
                        <div>
                       <h1>Current Weight:</h1>
                    <input type="text" placeholder="">
@@ -84,13 +83,16 @@
                   <div class="column">
                     <div>
                       <h1>Height:</h1>
-                   <input type="text" placeholder="">
+                    <b-select placeholder="Height" icon="account">
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                   </b-select>
                     </div>
                   </div>
                   <div class="column">
                       <div class="columns is-pulled-right">
                 <div class="column is-full ">
-                  <button @click="registerPage()" class="button is-primary">Return</button>
+                  <button @click="registerPage()" class="button is-info">Return</button>
                   <button @click="$router.push('Dashboard')" class="button is-success">Create Account</button>
                 </div>
                </div>
@@ -112,6 +114,7 @@ export default {
   },
  data(){
    return {
+     height: [],
     isRegister: false,
     data: null,
    }
