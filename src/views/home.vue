@@ -70,7 +70,6 @@
                       <h1>Current Weight:</h1>
                    <input type="text" placeholder="">
                     </div>
-                    
                   </div>
                   <div class="column">
                      <div>
