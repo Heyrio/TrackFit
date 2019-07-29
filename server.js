@@ -2,11 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const Post = require('./Post');
 const app = express();
+const UserInfo = require('./userInfo');
 
 let data = null;
-let newData = null;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,14 +20,30 @@ mongoose.connect(URI, { useNewUrlParser: true }).then(() => {
     // Needs to be above the requests
 app.use(cors());
 
-app.get('/', (req, res) => {
+//Api end points
+app.get('/all', (req, res) => {
     res.send(data);
 });
 
+// All data call
+UserInfo.find({}, (err, info) => {
+    data = info;
+});
 
 //CRUD operations
-Post.find({}, (err, posts) => {
-    data = posts;
+app.post('/', (req, res) => {
+    console.log(req.body);
+    let postUser = new UserInfo();
+    postUser.firstName = req.body.firstName;
+    postUser.lastName = req.body.lastName;
+    postUser.email = req.body.email;
+    postUser.height = req.body.height;
+    postUser.weight = req.body.weight;
+    postUser.age = req.body.age;
+    postUser.password = req.body.password;
+    postUser.save().then((err, res) => {
+        console.log('saved!');
+    })
 });
 
 
