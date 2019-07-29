@@ -4,7 +4,7 @@
         <div class="columns is-centered">
           <div class="column is-full">
             <h1>TrackFit</h1>
-            <p>( A place to log your fitness activities )</p>
+            <p>(A place to log your fitness activities)</p>
           </div>
         </div>
         <div class="columns is-centered">
