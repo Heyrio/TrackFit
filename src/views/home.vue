@@ -131,15 +131,14 @@ export default {
      let tempV = [];
      tempV.push(this.$refs.email.value);
      tempV.push(this.$refs.pass.value);
-     console.log(tempV);
         axios
             .post(this.uri + "findUser", tempV )
             .then((response) => {
               console.log(response);
-              if(response.data === true){
+              if(response.data){
                 this.$router.push('/dashboard');
               }
-              localStorage.setItem('accessToken', response.data.token);
+              localStorage.setItem('accessToken', response.data);
 
               /*eslint-disable*/
 
