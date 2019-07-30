@@ -26,7 +26,8 @@
     "multer": "^1.4.2",
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.4.0",
-    "vue-router": "^3.0.7"
+    "vue-router": "^3.0.7",
+    "vuejs-jwt": "^1.1.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",

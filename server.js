@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const UserInfo = require('./userInfo');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 let data = null;
-let autho = false;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Connecting to MongoDB 
@@ -25,18 +24,18 @@ app.use(cors());
 app.get('/all', (req, res) => {
     res.send(data);
 });
-
+app.set('appSecret', 'secretforFitApp');
 // login
 app.post('/findUser', (req, res) => {
     data.forEach((user) => {
         if (user.email === req.body[0]) {
             bcrypt.compare(req.body[1], user.password, (error, response) => {
                 if (response) {
-                    autho = response;
-                    res.send(autho);
+                    // needs to add user data to token 
+                    let token = jwt.sign({ allowed: true }, app.get('appSecret'));
+                    res.send(token);
                 } else {
-                    autho = false;
-                    res.send(autho);
+                    res.send(false);
                 }
             });
         }
