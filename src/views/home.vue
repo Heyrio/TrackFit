@@ -14,18 +14,18 @@
                   <form onsubmit="return false">
                   <div class="column is-half">
                     <div>
-                      <label>Email: <input type="email" placeholder=""></label>
+                      <label>Email: <input type="email" placeholder="" ref="email"></label>
                     </div>
                   </div>
                   <div class="column is-half">
                     <div>
-                      <label>Password: <input type="password" placeholder=""></label>
+                      <label>Password: <input type="password" placeholder="" ref="pass"></label>
                    </div>
                   </div>
                   <div class="columns is-pulled-right">
                 <div class="column is-full ">
                   <button @click="registerPage()" class="button is-info">Register</button>
-                  <button @click="$router.push('Dashboard'), dataCall();" class="button is-success">Login</button>
+                  <button @click="checkUser()" class="button is-success">Login</button>
                 </div>
                </div>
                </form>
@@ -124,9 +124,27 @@ export default {
    }
  },
   mounted(){
-  
   },
  methods:{
+   checkUser(){
+     /*eslint-disable*/
+     let tempV = [];
+     tempV.push(this.$refs.email.value);
+     tempV.push(this.$refs.pass.value);
+     console.log(tempV);
+        axios
+            .post(this.uri + "findUser", tempV )
+            .then((response) => {
+              console.log(response);
+              if(response.data === true){
+                this.$router.push('/dashboard');
+              }
+              localStorage.setItem('accessToken', response.data.token);
+
+              /*eslint-disable*/
+
+          });
+   },
    postUser(){
      let user = new User();
      user.firstName = this.$refs.first.value;
@@ -140,7 +158,8 @@ export default {
        axios
             .post(this.uri, user)
             .then((response) => {
-              this.data = response.data;
+              console.log(response);
+              this.data = response;
               /*eslint-disable*/
               console.log(this.data);
           })
@@ -157,8 +176,9 @@ export default {
    },
    dataCall(){
       axios
-            .get(this.uri+ "all")
+            .get(this.uri + "all")
             .then((response) => {
+              localStorage.setItem('accessToken', response.data.token);
               this.data = response.data;
               /*eslint-disable*/
               console.log(this.data);
@@ -169,9 +189,6 @@ export default {
 </script>
 
 <style scoped>
-/* *{
-  border: 1px solid red;
-} */
   @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
   html{
     background-color: blue;

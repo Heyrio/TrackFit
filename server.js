@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const UserInfo = require('./userInfo');
-
+// const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 let data = null;
-
+let autho = false;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Connecting to MongoDB 
@@ -25,6 +26,23 @@ app.get('/all', (req, res) => {
     res.send(data);
 });
 
+// login
+app.post('/findUser', (req, res) => {
+    data.forEach((user) => {
+        if (user.email === req.body[0]) {
+            bcrypt.compare(req.body[1], user.password, (error, response) => {
+                if (response) {
+                    autho = response;
+                    res.send(autho);
+                } else {
+                    autho = false;
+                    res.send(autho);
+                }
+            });
+        }
+    });
+});
+
 // All data call
 UserInfo.find({}, (err, info) => {
     data = info;
@@ -40,12 +58,12 @@ app.post('/', (req, res) => {
     postUser.height = req.body.height;
     postUser.weight = req.body.weight;
     postUser.age = req.body.age;
-    postUser.password = req.body.password;
+    let hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    postUser.password = hashedPassword;
     postUser.save().then((err, res) => {
-        console.log('saved!');
+        console.log(res);
     })
 });
-
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
