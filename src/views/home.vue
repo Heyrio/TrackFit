@@ -135,8 +135,8 @@ export default {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
     /*eslint-disable*/
-    // console.log(JSON.parse(jsonPayload).allowed);
-    store.commit('updateUserPermission', JSON.parse(jsonPayload).allowed)
+    store.commit('updateUserPermission', JSON.parse(jsonPayload).allowed);
+    store.commit('updateUserData', JSON.parse(jsonPayload).user);
 },
    checkUser(){
      /*eslint-disable*/

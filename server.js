@@ -34,7 +34,7 @@ app.post('/findUser', (req, res) => {
                 bcrypt.compare(req.body[1], user.password, (error, response) => {
                     if (response) {
                         // needs to add user data to token 
-                        let token = jwt.sign({ allowed: true }, app.get('appSecret'));
+                        let token = jwt.sign({ allowed: true, user }, app.get('appSecret'));
                         res.send(token);
                     } else {
                         res.send(false);

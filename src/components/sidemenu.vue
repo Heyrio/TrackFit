@@ -2,7 +2,7 @@
     <div class="side-menu">
       <div class="columns">
         <div class="column photo">
-          <h1>Hamzah Amer</h1>
+          <h1>{{firstName+" "+lastName}}</h1>
           <div class="pic-box">
             <img class="is-fluid" src="@/assets/images/me.jpg">
             </div>
@@ -33,10 +33,13 @@
 </template>
 
 <script>
+import store from '../routes/store.js';
 export default {
   name: 'sidemenu',
   data(){
   return{
+      firstName: store.state.userData.firstName,
+      lastName: store.state.userData.lastName,
       item1: true,
       item2: false,
       item3: false,
