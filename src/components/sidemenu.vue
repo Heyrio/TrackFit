@@ -20,7 +20,7 @@
               <router-link to="/stats" @click.native="menuSelect(3)" :class="{ selected: item3 }">Fitness Stats</router-link>
               <router-link to="/routine" @click.native="menuSelect(4)" :class="{ selected: item4 }">Gym Routine</router-link>
               <router-link to="/history" @click.native="menuSelect(5)" :class="{ selected: item5 }">History</router-link>
-              <router-link to="/" @click.native="menuSelect(6)" :class="{ selected: item6 }">Logout</router-link>
+              <router-link to="/" @click.native="menuSelect(6), removeToken()" :class="{ selected: item6 }">Logout</router-link>
             </ul>
           </li>
         </ul>
@@ -47,6 +47,9 @@ export default {
     }
   },
   methods:{
+    removeToken(){
+      localStorage.removeItem('accessToken');
+    },
     menuSelect(item){
       if(item === 1){
       this.item1 = true;
