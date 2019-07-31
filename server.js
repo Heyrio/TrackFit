@@ -6,7 +6,7 @@ const app = express();
 const UserInfo = require('./userInfo');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-let data = null;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //Connecting to MongoDB 
@@ -27,25 +27,24 @@ app.get('/all', (req, res) => {
 app.set('appSecret', 'secretforFitApp');
 // login
 app.post('/findUser', (req, res) => {
-    data.forEach((user) => {
-        if (user.email === req.body[0]) {
-            bcrypt.compare(req.body[1], user.password, (error, response) => {
-                if (response) {
-                    // needs to add user data to token 
-                    let token = jwt.sign({ allowed: true }, app.get('appSecret'));
-                    res.send(token);
-                } else {
-                    res.send(false);
-                }
-            });
-        }
+    UserInfo.find({}, (err, info) => {
+        let data = info;
+        data.forEach((user) => {
+            if (user.email === req.body[0]) {
+                bcrypt.compare(req.body[1], user.password, (error, response) => {
+                    if (response) {
+                        // needs to add user data to token 
+                        let token = jwt.sign({ allowed: true }, app.get('appSecret'));
+                        res.send(token);
+                    } else {
+                        res.send(false);
+                    }
+                });
+            }
+        });
     });
 });
-
 // All data call
-UserInfo.find({}, (err, info) => {
-    data = info;
-});
 
 //CRUD operations
 app.post('/', (req, res) => {
