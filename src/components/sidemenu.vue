@@ -19,7 +19,7 @@
               <router-link to="/log" @click.native="menuSelect(2)" :class="{ selected: item2 }">Update Log</router-link>
               <router-link to="/stats" @click.native="menuSelect(3)" :class="{ selected: item3 }">Fitness Stats</router-link>
               <router-link to="/routine" @click.native="menuSelect(4)" :class="{ selected: item4 }">Gym Routine</router-link>
-              <router-link to="/History" @click.native="menuSelect(5)" :class="{ selected: item5 }">History</router-link>
+              <router-link to="/history" @click.native="menuSelect(5)" :class="{ selected: item5 }">History</router-link>
               <router-link to="/" @click.native="menuSelect(6)" :class="{ selected: item6 }">Logout</router-link>
             </ul>
           </li>

@@ -108,6 +108,7 @@
 <script>
 import axios from 'axios';
 import User from '@/model/User.js'
+import store from '../routes/store.js';
 export default {
   name: 'home',
   components:{
@@ -116,6 +117,7 @@ export default {
  data(){
    return {
     uri: 'http://localhost:4000/',
+    // url: 'http://192.168.20.79:4000/',
     heights: ["4'10","4'11","5'0","5'1","5'2","5'3",
     "5'4","5'5","5'6","5'7","5'8","5'9","5'10","5'11",
     "6'0","6'1","6'2","6'3","6'4"],
@@ -124,8 +126,19 @@ export default {
    }
  },
   mounted(){
+  
   },
  methods:{
+    parseJwt(token) {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    /*eslint-disable*/
+    // console.log(JSON.parse(jsonPayload).allowed);
+    store.commit('updateUserPermission', JSON.parse(jsonPayload).allowed)
+},
    checkUser(){
      /*eslint-disable*/
      let tempV = [];
@@ -136,10 +149,11 @@ export default {
             .then((response) => {
               console.log(response);
               if(response.data){
+                localStorage.setItem('accessToken', response.data);
+                this.parseJwt(localStorage.getItem('accessToken'));
                 this.$router.push('/dashboard');
               }
-              localStorage.setItem('accessToken', response.data);
-
+              
               /*eslint-disable*/
 
           });
