@@ -58,6 +58,9 @@ export default {
           }]
    }
  },
+ mounted(){
+   
+ },
  methods:{
    generateData(count, yrange){
       var i = 0;
