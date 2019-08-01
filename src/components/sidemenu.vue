@@ -3,8 +3,8 @@
       <div class="columns">
         <div class="column photo">
           <h1>{{firstName+" "+lastName}}</h1>
-          <div class="pic-box">
-            <img class="is-fluid" src="@/assets/images/me.jpg">
+          <div @click="toggleWindow()" class="pic-box">
+            <img class="is-fluid" src="@/assets/images/defaultPic.png">
             </div>
         </div>
       </div>
@@ -12,6 +12,23 @@
         <div class="column">
           <div>
         <aside class="menu">
+
+          <div v-bind:class="[imgWindow ? 'is-active modal' : 'modal']" >
+            <div class="modal-background"></div>
+              <div class="modal-content">
+                  <div class="columns is-centered">
+                    <div class="column is-half">
+                      <div class="box"><h1><b>Select Your Profile Image</b></h1>
+                        <input type="file" name="pic" accept="image/*">
+                        <b-button type="is-success" class=" is-pulled-right">Upload</b-button>
+                      </div>
+                       
+                    </div>
+                  </div>
+               </div>
+            <button @click="toggleWindow()" class="modal-close is-large" aria-label="close">upload</button>
+          </div>
+
         <ul class="menu-list">
           <li>
             <ul>
@@ -38,6 +55,7 @@ export default {
   name: 'sidemenu',
   data(){
   return{
+      imgWindow: false,
       firstName: store.state.userData.firstName,
       lastName: store.state.userData.lastName,
       item1: true,
@@ -46,10 +64,12 @@ export default {
       item4: false,
       item5: false,
       item6: false,
-
     }
   },
   methods:{
+    toggleWindow(){
+     this.imgWindow = !this.imgWindow;
+    },
     removeToken(){
       localStorage.removeItem('accessToken');
     },
@@ -115,6 +135,7 @@ export default {
 .pic-box{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
  a{
   color: #fff !important;

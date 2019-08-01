@@ -35,9 +35,9 @@ app.post('/findUser', (req, res) => {
                     if (response) {
                         // needs to add user data to token 
                         let token = jwt.sign({ allowed: true, user }, app.get('appSecret'));
-                        res.send(token);
+                        res.end(token);
                     } else {
-                        res.send(false);
+                        res.end(false);
                     }
                 });
             }

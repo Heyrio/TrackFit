@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import store from '../routes/store.js';
 import VueApexCharts from 'vue-apexcharts'
 export default {
   name: 'dash',
@@ -35,7 +36,7 @@ export default {
   },
  data(){
    return {
-     weight: 194,
+     weight: store.state.userData.weight,
      water: 2,
      calories: 1900,
      chartOptions: {
