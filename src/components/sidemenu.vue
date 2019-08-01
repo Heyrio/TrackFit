@@ -4,7 +4,7 @@
         <div class="column photo">
           <h1>{{firstName+" "+lastName}}</h1>
           <div class="pic-box">
-            <img class="is-fluid" src="@/assets/images/me.jpg">
+            <img class="is-fluid" src="@/assets/images/defaultPic.png">
             </div>
         </div>
       </div>

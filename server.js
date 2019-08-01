@@ -37,7 +37,7 @@ app.post('/findUser', (req, res) => {
                         let token = jwt.sign({ allowed: true, user }, app.get('appSecret'));
                         res.end(token);
                     } else {
-                        res.send(false);
+                        res.end(false);
                     }
                 });
             }
