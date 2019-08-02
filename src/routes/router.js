@@ -86,6 +86,13 @@ const router = new Router({
             path: '/',
             name: 'Home',
             component: home,
+        },
+
+        {
+            path: "*",
+            beforeEnter: async function(to, from, next) {
+                next({ path: '/' })
+            }
         }
     ],
 
